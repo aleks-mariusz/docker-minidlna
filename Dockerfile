@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:18.04
 
 LABEL author="Vincent BESANCON <besancon.vincent@gmail.com>"
 LABEL description="Serve media through an UPNP AV server using minidlna."
@@ -15,7 +15,7 @@ RUN mkdir /run/minidlna && chown minidlna:minidlna /run/minidlna
 ADD supervisord.conf /
 ADD minidlna.conf /etc
 
-VOLUME ["/media"]
+VOLUME ["/Media"]
 
 EXPOSE 1900/udp 8200/tcp
 
