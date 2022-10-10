@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 LABEL author="Vincent BESANCON <besancon.vincent@gmail.com>"
 LABEL description="Serve media through an UPNP AV server using minidlna."
@@ -10,7 +10,7 @@ RUN \
   && apt-get update \
   && apt-get install -y minidlna supervisor
 
-RUN mkdir /run/minidlna && chown minidlna:minidlna /run/minidlna
+RUN mkdir /run/minidlna && chown minidlna:minidlna /run/minidlna && touch /var/log/minidlna.log && chown minidlna:minidlna /var/log/minidlna.log
 
 ADD supervisord.conf /
 ADD minidlna.conf /etc
