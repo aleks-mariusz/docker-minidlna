@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM alpine:3
 
 LABEL author="Vincent BESANCON <besancon.vincent@gmail.com>"
 LABEL description="Serve media through an UPNP AV server using minidlna."
@@ -6,9 +6,7 @@ LABEL description="Serve media through an UPNP AV server using minidlna."
 ENV LANG=C.UTF-8
 
 RUN \
-  set -xe \
-  && apt-get update \
-  && apt-get install -y minidlna supervisor
+  apk add minidlna supervisor
 
 RUN mkdir /run/minidlna && chown minidlna:minidlna /run/minidlna && touch /var/log/minidlna.log && chown minidlna:minidlna /var/log/minidlna.log
 
